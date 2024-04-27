@@ -7,5 +7,5 @@ Welcome to bothnode-infra.
 ```
 
 ### IaC tool for bothnode: Ethereum Smartcontracs (DeFi) Mitigating the Manipulation
-What you can do with [bothnode](https://github.com/Utatistics/bothnode/tree/main):
- - manage cloud resouces for bothnode with the use of OSS cloud automation tools
+What you can do with bothnode-infra:
+ - manage cloud resouces for [bothnode](https://github.com/Utatistics/bothnode/tree/main) with the use of OSS cloud automation tools
