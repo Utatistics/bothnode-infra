@@ -1,5 +1,8 @@
+# private 
 ./aws/credentials/
+./aws/instance_id
 ./ovh
 
+# terraform data
 **.terraform*
 *terraform*
