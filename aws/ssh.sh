@@ -11,7 +11,7 @@ INSTANCE_ID="$1"
 SSH_KEY="/home/vagrant/.ssh/ec2key.pem"
 
 # Use AWS CLI to describe the EC2 instance and extract the public IP address
-PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+PUBLIC_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
 
 # If public IP is empty, try getting the public DNS name as fallback
 if [ -z "$PUBLIC_IP" ]; then
@@ -26,5 +26,5 @@ fi
 
 # SSH into the EC2 instance using the retrieved public IP address or DNS name
 echo "Connecting to $INSTANCE_ID:$PUBLIC_IP with $SSH_KEY..."
-ssh -v -i "$SSH_KEY" ubuntu@$PUBLIC_IP
+ssh -v -i "$SSH_KEY" ubuntu@$PUBLIC_IP_ADDRESS
 
