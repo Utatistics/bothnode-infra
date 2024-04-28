@@ -8,7 +8,7 @@ Welcome to bothnode-infra.
 
 ### IaC tool for bothnode: Ethereum Smartcontracs (DeFi) Mitigating the Manipulation
 What you can do with bothnode-infra:
- - manage cloud resouces for [bothnode](https://github.com/Utatistics/bothnode/tree/main) with the use of OSS cloud automation tools
+ - manage cloud resouces for [bothnode](https://github.com/Utatistics/bothnode/tree/main) with the use of open-source cloud automation tools
 
 ### Getting Started 
 To install Terraform, follow the instructions provided in the [official documentation](https://developer.hashicorp.com/terraform/install).
@@ -19,6 +19,12 @@ terraform init
 terraform plan
 terraform apply
 ```
-Connect to remote server with SSH
+
+Connect to AWS EC2 instance with SSH
 ```bash
-ssh 
+# use ssh
+ssh -v -i $SSH_KEY ubuntu@$PUBLIC_IP_ADDRESS
+
+# use the pre-configured ssh script 
+./ssh <instance_id>
+```
