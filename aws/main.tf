@@ -1,19 +1,21 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source  = "hashicorp/aws" 
     }
   }
 }
 
 provider "aws" {
-  region = "ap-northeast-1"
+  region = var.region
 }
 
 module "network" {
-  source = "./modules/network"
+  source = "./modules/vpc"
+  region = var.region
 }
 
 module "compute" {
   source = "./modules/compute"
+  region = var.region  
 }
