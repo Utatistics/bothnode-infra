@@ -11,7 +11,35 @@ resource "aws_vpc" "bothnode_vpc" {
 
 }
 
+# explicit resource association
+resource "aws_main_route_table_association" "route_table_association" {
+  vpc_id         = aws_vpc.bothnode_vpc.id
+  route_table_id = module.route_table.bothnode_route_table_id
+}
+
+resource "aws_network_acl_association" "network_acl_association_public" {
+  subnet_id      = module.subnet_public.bothnode_subnet_id
+  network_acl_id = module.network_acl.bothnode_network_acl_id
+}
+
+resource "aws_network_acl_association" "network_acl_association_private" {
+  subnet_id      = module.subnet_private.bothnode_subnet_id
+  network_acl_id = module.network_acl.bothnode_network_acl_id
+}
+
 # calling the network related modules
+module "route_table" {
+  source = "../route_table"
+
+  vpc_id = aws_vpc.bothnode_vpc.id
+}
+
+module "network_acl" {
+  source = "../network_acl"
+
+  vpc_id = aws_vpc.bothnode_vpc.id
+}
+
 module "subnet_public" {
   source = "../subnet"
 
@@ -30,18 +58,6 @@ module "subnet_private" {
 
 module "security_group" {
   source = "../security_group"
-
-  vpc_id = aws_vpc.bothnode_vpc.id
-}
-
-module "network_acl" {
-  source = "../network_acl"
-
-  vpc_id = aws_vpc.bothnode_vpc.id
-}
-
-module "route_table" {
-  source = "../route_table"
 
   vpc_id = aws_vpc.bothnode_vpc.id
 }
@@ -67,14 +83,6 @@ output "subnet_private_id" {
 
 output "bothnode_default_secuirty_group_id" {
   value = module.security_group.bothnode_sg_id
-}
-
-output "bothnode_default_network_acl_id" {
-  value = module.network_acl.bothnode_network_acl_id
-}
-
-output "bothnode_default_route_talbe_id" {
-  value = module.route_table.bothnode_route_table_id
 }
 
 output "bothnode_dhcp_options_id" {
