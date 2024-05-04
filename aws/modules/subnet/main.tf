@@ -6,5 +6,5 @@ resource "aws_subnet" "bothnode_subnet" {
 }
 
 output "bothnode_subnet_id" {
-  value = aws_subnet.bothnode_subnet
+  value = aws_subnet.bothnode_subnet.id
 }

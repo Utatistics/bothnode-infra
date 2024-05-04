@@ -1,4 +1,3 @@
-
 resource "aws_network_acl" "bothnode_network_acl" {
   vpc_id = var.vpc_id
 
