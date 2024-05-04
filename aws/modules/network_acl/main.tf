@@ -1,4 +1,9 @@
 resource "aws_network_acl" "bothnode_network_acl" {
+  tags = {
+    Name          = "bothnode-network-acl"
+    ResourceGroup = "bothnode"
+  }
+
   vpc_id = var.vpc_id
 
   ingress {
@@ -21,5 +26,5 @@ resource "aws_network_acl" "bothnode_network_acl" {
 }
 
 output "bothnode_network_acl_id" {
-  value        = aws_network_acl.bothnode_network_acl.id
+  value = aws_network_acl.bothnode_network_acl.id
 }

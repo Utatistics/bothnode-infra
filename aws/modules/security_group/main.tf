@@ -1,6 +1,10 @@
 resource "aws_security_group" "bothnode_sg" {
   name        = "bothnode_sg"
   description = "Security group for bothnode server"
+  tags = {
+    Name          = "bothnode-sg"
+    ResourceGroup = "bothnode"
+  }
 
   vpc_id = var.vpc_id
 
@@ -29,13 +33,13 @@ resource "aws_security_group" "bothnode_sg" {
     from_port   = 8545 # RPC (Remote Procedure Call) Port used for Ethereum JSON-RPC API
     to_port     = 8545
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] 
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    from_port   = 30303 
+    from_port   = 30303
     to_port     = 30303
-    protocol    = "tcp" 
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -50,6 +54,6 @@ resource "aws_security_group" "bothnode_sg" {
 }
 
 output "bothnode_sg_id" {
-    value       = aws_security_group.bothnode_sg.id
+  value = aws_security_group.bothnode_sg.id
 }
 
