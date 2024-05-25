@@ -35,22 +35,13 @@ resource "aws_security_group" "bothnode_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  egress {
-    from_port   = 30303
-    to_port     = 30303
-    protocol    = "tcp"
+  
+ egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  egress {
-    from_port   = 30301 # Discovery port for Ethereum node discovery
-    to_port     = 30301
-    protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-
 }
 
 output "bothnode_sg_id" {

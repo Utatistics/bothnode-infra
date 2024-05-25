@@ -10,7 +10,7 @@ resource "aws_instance" "bothnode_ec2" {
 
   subnet_id              = var.subnet_id
   vpc_security_group_ids = var.vpc_security_group_ids
-
+  
   root_block_device {
     volume_size = 2000
   }
