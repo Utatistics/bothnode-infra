@@ -1,8 +1,10 @@
-# private 
-./aws/credentials/
-./aws/instance_id
-./ovh
+# local 
+aws/bin/*
+ovh/*
+
+# senstive infomation 
+aws/credentials/*
 
 # terraform data
-**.terraform*
-*terraform*
+**terraform.tfstate*
+**.terraform/
