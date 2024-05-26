@@ -8,12 +8,14 @@ resource "aws_instance" "bothnode_ec2" {
     ResourceGroup = "bothnode"
   }
 
-  subnet_id              = var.subnet_id
-  vpc_security_group_ids = var.vpc_security_group_ids
-  
   root_block_device {
     volume_size = 2000
   }
+
+  subnet_id              = var.subnet_id
+  vpc_security_group_ids = var.vpc_security_group_ids
+  user_data = file("${path.module}/pkg_install.sh")
+
 }
 
 output "bothnode_ec2_id" {
