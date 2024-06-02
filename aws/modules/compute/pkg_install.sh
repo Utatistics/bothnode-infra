@@ -4,25 +4,28 @@
 exec > /var/log/pkg_install.log 2>&1
 
 # update repository 
-sudo add-apt-repository ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get upgrade
+add-apt-repository ppa:ethereum/ethereum
+apt-get update
+apt-get upgrade
 
-# common util 
-sudo apt-get -y install network-manager
-sudo apt-get -y install net-tools
-sudo apt-get -y install tree
-sudo apt-get -y install jq
-sudo apt-get -y install unzip
+# install as the root user
+apt-get -y install network-manager
+apt-get -y install net-tools
+apt-get -y install tree
+apt-get -y install jq
+apt-get -y install unzip
+apt-get -y install python3-pip
+apt-get -y install python3-venv
 
-# setup python ecosystem
-sudo apt-get -y install python3-pip
-sudo apt-get -y install python3-venv
-python3 -m venv ~/.venv
-
-# set up JavaScript ecosystem.
-sudo apt-get install -y npm
+# install as an user
+sudo -u ubuntu bash <<'EOF'
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+source /home/ubuntu/.nvm/nvm.sh
+source /home/ubuntu/.bashrc
 
-# install bothnode 
+# install bothnode
+python3 -m venv /home/ubuntu/.venv
 git clone https://github.com/Utatistics/bothnode.git /home/ubuntu/bothnode
+EOF
+
+echo completed!
