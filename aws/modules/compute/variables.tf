@@ -3,6 +3,16 @@ variable "region" {
   description = "The AWS region assocaited with the resource"
 }
 
+variable "ami" {
+  description = "The AMI ID to use for EC2 instances"
+  type        = string
+}
+
+variable "key_name" {
+  description = "The key pair name to use for EC2 instances"
+  type        = string
+}
+
 variable "subnet_id" {
   type        = string
   description = "The id for the subnet to which the instance is attached"

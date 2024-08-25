@@ -19,9 +19,11 @@ apt-get -y install python3-venv
 
 # install as an user
 sudo -u ubuntu bash <<'EOF'
+# install nvm, node and npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source /home/ubuntu/.nvm/nvm.sh
 source /home/ubuntu/.bashrc
+nvm install --lts
 
 # install bothnode
 python3 -m venv /home/ubuntu/.venv

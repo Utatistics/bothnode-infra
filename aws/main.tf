@@ -17,8 +17,9 @@ module "vpc" {
 
 module "compute" {
   source = "./modules/compute"
-
   region                 = var.region
+  ami = var.ami
+  key_name = var.key_name
   subnet_id              = module.vpc.subnet_public_id
   vpc_security_group_ids = [module.vpc.bothnode_default_secuirty_group_id]
 }
