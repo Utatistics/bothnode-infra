@@ -24,7 +24,7 @@ terraform apply -var-file="terraform.tfvars"
 Connect to AWS EC2 instance with SSH
 ```bash
 # use ssh
-ssh -v -i $SSH_KEY ubuntu@$PUBLIC_IP_ADDRESS
+ssh -v -i $SSH_KEY ubuntu@$EC2_IP_ADDRESS
 
 # use the pre-configured ssh script 
 ./ssh <instance_id> <region>

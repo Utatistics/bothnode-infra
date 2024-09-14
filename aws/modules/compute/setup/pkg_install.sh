@@ -14,6 +14,7 @@ apt-get -y install net-tools
 apt-get -y install tree
 apt-get -y install jq
 apt-get -y install unzip
+apt-get -y install logrotate
 apt-get -y install python3-pip
 apt-get -y install python3-venv
 
@@ -28,6 +29,7 @@ nvm install --lts
 # install bothnode
 python3 -m venv /home/ubuntu/.venv
 git clone https://github.com/Utatistics/bothnode.git /home/ubuntu/bothnode
+mkdir -p /home/ubuntu/.bothnode/log
 EOF
 
 echo completed!

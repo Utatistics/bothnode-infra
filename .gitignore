@@ -1,6 +1,6 @@
 # local 
-aws/bin/*
 ovh/*
+**.env
 
 # senstive infomation 
 aws/credentials/*
