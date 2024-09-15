@@ -1,19 +1,21 @@
 resource "aws_instance" "bothnode_ec2" {
-  ami           = "ami-0f7b55661ecbbe44c"
+  ami           = var.ami
   instance_type = "m5.xlarge"
-  key_name      = "ec2key"
+  key_name      = var.key_name
 
   tags = {
     Name          = "bothnode-ec2"
     ResourceGroup = "bothnode"
   }
 
-  subnet_id              = var.subnet_id
-  vpc_security_group_ids = var.vpc_security_group_ids
-  
   root_block_device {
     volume_size = 2000
   }
+
+  subnet_id              = var.subnet_id
+  vpc_security_group_ids = var.vpc_security_group_ids
+  user_data = file("${path.module}/pkg_install.sh")
+
 }
 
 output "bothnode_ec2_id" {
