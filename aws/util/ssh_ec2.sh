@@ -10,7 +10,7 @@ get_ec2_ip_address() {
 
     # If public IP is empty, try getting the public DNS name as fallback
     if [ -z "$ec2_ip_address" ]; then
-        ec2_ip=$(aws ec2 describe-instances --instance-ids "$instance_id" --region "$region" --query "Reservations[*].Instances[*].PublicDnsName" --output text)
+        ec2_ip_address=$(aws ec2 describe-instances --instance-ids "$instance_id" --region "$region" --query "Reservations[*].Instances[*].PublicDnsName" --output text)
     fi
 
     # Check if public IP or DNS name was successfully retrieved
@@ -26,7 +26,7 @@ get_ec2_ip_address() {
 main() {
     # Check if the correct number of arguments are provided
     if [ $# -ne 3 ]; then
-        echo "Usage: $0 <INSTANCE_ID> <REGION>"
+        echo "Usage: $0 <INSTANCE_ID> <REGION> <USER>"
         exit 1
     fi
 
@@ -35,11 +35,23 @@ main() {
     local region="$2"
     local ec2_user="$3"
 
+    # Load environment variables from .env file if it exists
+    if [ -f "util/.env" ]; then
+        source util/.env
+    else
+        echo "Error: .env file not found in the 'util' directory."
+        exit 1
+    fi
+
     # Ensure that the SSH keys were sourced
     if [ -z "$SSH_KEY_TOKYO" ] || [ -z "$SSH_KEY_LONDON" ]; then
         echo "Error: SSH key paths are not properly set in the .env file."
         exit 1
     fi
+
+    # Print SSH keys for debugging (remove this in production)
+    echo "SSH_KEY_TOKYO: $SSH_KEY_TOKYO"
+    echo "SSH_KEY_LONDON: $SSH_KEY_LONDON"
 
     # Select the correct SSH key based on the region
     if [ "$region" == "ap-northeast-1" ]; then

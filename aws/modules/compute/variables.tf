@@ -8,6 +8,12 @@ variable "ami" {
   type        = string
 }
 
+variable "instance_type" {
+  description = "Instance type"
+  type        = string
+  default     = "m5.xlarge"
+}
+
 variable "key_name" {
   description = "The key pair name to use for EC2 instances"
   type        = string
