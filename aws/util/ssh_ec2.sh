@@ -49,10 +49,6 @@ main() {
         exit 1
     fi
 
-    # Print SSH keys for debugging (remove this in production)
-    echo "SSH_KEY_TOKYO: $SSH_KEY_TOKYO"
-    echo "SSH_KEY_LONDON: $SSH_KEY_LONDON"
-
     # Select the correct SSH key based on the region
     if [ "$region" == "ap-northeast-1" ]; then
         ssh_key="$SSH_KEY_TOKYO"
@@ -71,7 +67,5 @@ main() {
     ssh -v -i "$ssh_key" $ec2_user@"$ec2_ip_address"
 }
 
-# Run the main function if this script is executed directly
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    main "$@"
-fi
+# Run the main function.
+main "$@"
