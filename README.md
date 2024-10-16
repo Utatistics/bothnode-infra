@@ -10,6 +10,11 @@ Welcome to bothnode-infra.
 What you can do with bothnode-infra:
  - manage cloud resouces for [bothnode](https://github.com/Utatistics/bothnode/tree/main) with the use of open-source cloud automation tools
 
+### bothnode architecture
+
+![Bothnode Architecture](images/architecture.png)
+
+
 ### Getting Started 
 To install Terraform, follow the instructions provided in the [official documentation](https://developer.hashicorp.com/terraform/install).
 

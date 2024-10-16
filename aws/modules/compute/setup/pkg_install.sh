@@ -28,7 +28,7 @@ add-apt-repository "deb https://download.docker.com/linux/ubuntu $(lsb_release -
 apt-get install -y docker-ce
 apt-get install -y docker-ce-cli
 apt-get install -y containerd.io
-gpasswd -a vagrant docker
+gpasswd -a ubuntu docker
 newgrp docker
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
