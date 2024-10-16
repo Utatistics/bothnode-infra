@@ -12,7 +12,7 @@ bothnode-infra is powered by Terraform, which allows you to acquire cloud resour
 ### bothnode architecture
 Below is a simple diagram for bothnode system architecture.
 
-![Bothnode Architecture](images/bohtnode.png)
+![Bothnode Architecture](images/bothnode.png)
 bothnode-suite consists of 3 main parts:
 - [bothnode](https://github.com/Utatistics/bothnode/main): provides the CLI tool to interact with node, run transaction and program and conduct analysis
 - [bothnode-app](https://github.com/Utatistics/bothnode-app): provides a simple GUI to view the result of transaction as well as analysis
