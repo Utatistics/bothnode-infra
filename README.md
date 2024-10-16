@@ -1,3 +1,5 @@
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 # bothnode-infra
 Welcome to bothnode-infra.
 ```
