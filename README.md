@@ -14,7 +14,7 @@ Below is a simple diagram for bothnode system architecture.
 
 ![Bothnode Architecture](images/bothnode.png)
 bothnode-suite consists of 3 main parts:
-- [bothnode](https://github.com/Utatistics/bothnode/main): provides the CLI tool to interact with node, run transaction and program and conduct analysis
+- [bothnode](https://github.com/Utatistics/bothnode): provides the CLI tool to interact with node, run transaction and program and conduct analysis
 - [bothnode-app](https://github.com/Utatistics/bothnode-app): provides a simple GUI to view the result of transaction as well as analysis
 - bothnode-infra: A tool for cloud resource acquisition
   
