@@ -10,7 +10,7 @@ get_ec2_ip_address() {
 
     # If public IP is empty, try getting the public DNS name as fallback
     if [ -z "$ec2_ip_address" ]; then
-        ec2_ip=$(aws ec2 describe-instances --instance-ids "$instance_id" --region "$region" --query "Reservations[*].Instances[*].PublicDnsName" --output text)
+        ec2_ip_address=$(aws ec2 describe-instances --instance-ids "$instance_id" --region "$region" --query "Reservations[*].Instances[*].PublicDnsName" --output text)
     fi
 
     # Check if public IP or DNS name was successfully retrieved
@@ -26,7 +26,7 @@ get_ec2_ip_address() {
 main() {
     # Check if the correct number of arguments are provided
     if [ $# -ne 3 ]; then
-        echo "Usage: $0 <INSTANCE_ID> <REGION>"
+        echo "Usage: $0 <INSTANCE_ID> <REGION> <USER>"
         exit 1
     fi
 
@@ -34,6 +34,14 @@ main() {
     local instance_id="$1"
     local region="$2"
     local ec2_user="$3"
+
+    # Load environment variables from .env file if it exists
+    if [ -f "util/.env" ]; then
+        source util/.env
+    else
+        echo "Error: .env file not found in the 'util' directory."
+        exit 1
+    fi
 
     # Ensure that the SSH keys were sourced
     if [ -z "$SSH_KEY_TOKYO" ] || [ -z "$SSH_KEY_LONDON" ]; then
@@ -59,7 +67,5 @@ main() {
     ssh -v -i "$ssh_key" $ec2_user@"$ec2_ip_address"
 }
 
-# Run the main function if this script is executed directly
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    main "$@"
-fi
+# Run the main function.
+main "$@"

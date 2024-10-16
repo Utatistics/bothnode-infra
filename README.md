@@ -7,9 +7,17 @@ Welcome to bothnode-infra.
 ```
 
 ### IaC tool for bothnode: Ethereum Smartcontracs (DeFi) Mitigating the Manipulation
-What you can do with bothnode-infra:
- - manage cloud resouces for [bothnode](https://github.com/Utatistics/bothnode/tree/main) with the use of open-source cloud automation tools
+bothnode-infra is powered by Terraform, which allows you to acquire cloud resources via the various providers. It is designed to speed up the setup process crucial for node operation and analysis.
 
+### bothnode architecture
+Below is a simple diagram for bothnode system architecture.
+
+![Bothnode Architecture](images/bothnode.png)
+bothnode-suite consists of 3 main parts:
+- [bothnode](https://github.com/Utatistics/bothnode/main): provides the CLI tool to interact with node, run transaction and program and conduct analysis
+- [bothnode-app](https://github.com/Utatistics/bothnode-app): provides a simple GUI to view the result of transaction as well as analysis
+- bothnode-infra: A tool for cloud resource acquisition
+  
 ### Getting Started 
 To install Terraform, follow the instructions provided in the [official documentation](https://developer.hashicorp.com/terraform/install).
 
