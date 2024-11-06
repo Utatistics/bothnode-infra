@@ -14,6 +14,7 @@ apt-get -y install net-toolsbot
 apt-get -y install tree
 apt-get -y install jq
 apt-get -y install unzip
+apt-get -y install ccze
 apt-get -y install logrotate
 apt-get -y install python3-pip
 apt-get -y install python3-venv
@@ -46,11 +47,15 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source /home/ubuntu/.nvm/nvm.sh
 source /home/ubuntu/.bashrc
 nvm install --lts
+npm install -g truffle
 
-# install bothnode
+# install bothnode suite
 python3 -m venv /home/ubuntu/.venv
-git clone https://github.com/Utatistics/bothnode.git /home/ubuntu/bothnode
 mkdir -p /home/ubuntu/.bothnode/log
+
+git clone https://github.com/Utatistics/bothnode.git
+git clone https://github.com/Utatistics/bothnode-infra.git
+git clone https://github.com/Utatistics/bothnode-app.git
 
 EOF
 
